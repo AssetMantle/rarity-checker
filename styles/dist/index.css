@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 300ms ease-in-out;
+  font-family: "Roboto", sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 4px;
+  color: #ed6bde;
+}
+*::-webkit-scrollbar-thumb {
+  border: 5px solid #ed6bde;
+  border-radius: 4px;
+  background: transparent;
+}
+
+html {
+  font-size: calc($rf-spacing * $unit);
+  color: #1a2622;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button,
+*[role=button] {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  line-height: 150%;
+}
+
+.rc-container {
+  width: min(calc($rf-container-width + (24px * 2)), 100%);
+  margin: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.rc-container-fluid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.rc-logo {
+  display: flex;
+  gap: calc($rf-spacing * $unit);
+}
+.rc-logo > .icon {
+  width: 32px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.rc-logo > .icon > img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: contain;
+}
+.rc-logo > p {
+  font-size: 1.75rem;
+  color: #1a2622;
+  text-decoration: none;
+  font-weight: 700;
+}
+.rc-logo > p > span {
+  color: #ed6bde;
+}
+@media (max-width: 600px) {
+  .rc-logo > p.hide-on-small {
+    display: none;
+  }
+}
+.rc-divider {
+  height: 1.5px;
+  background-image: linear-gradient(90deg, #ed6b84 0%, #eb4882 16.92%, #f1e2d9 41.76%, #e3e675 62.38%, #93cd96 80.88%, #f2d260 90.39%);
+}
+.rc-divider-vertical {
+  width: 1.5px;
+  height: 100%;
+  background-image: linear-gradient(90deg, #ed6b84 0%, #eb4882 16.92%, #f1e2d9 41.76%, #e3e675 62.38%, #93cd96 80.88%, #f2d260 90.39%);
+}
+.rc-propertyBox {
+  width: min(200px, 100%);
+  padding: calc($rf-spacing * $unit);
+  border: 1px solid #1a2622;
+}
+.rc-propertyBox-propertyName {
+  font-size: 1rem;
+  line-height: 150%;
+}
+.rc-propertyBox-propertyValue {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 150%;
+}
+.rc-propertyBox-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc($rf-spacing * $unit);
+  padding-top: calc($rf-spacing * $unit);
+}
+.rc-propertyBox-data > * {
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: calc($rf-spacing * $unit);
+}
+.rc-propertyBox-data-star {
+  display: flex;
+}
+.rc-propertyBox-data-star > .icon {
+  width: 32px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.rc-propertyBox-data-star > .icon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.rc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+.rc-header-history {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc($rf-spacing * $unit);
+  position: relative;
+}
+.rc-header-history > .content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding-top: calc($rf-spacing * $unit);
+}
+.rc-header-history > .content > .content-box {
+  padding: calc($rf-spacing * $unit);
+  border: 1px solid #1a2622;
+  width: min(400px, 80dvw);
+  background-color: #ffffff;
+}
+.rc-footer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  gap: calc($rf-spacing * $unit);
+}
+.rc-footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc($rf-spacing * $unit);
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .rc-footer-top {
+    justify-content: center;
+  }
+}
+.rc-footer-top-socials {
+  display: flex;
+  gap: calc($rf-spacing * $unit);
+}
+.rc-footer-top-socials > a {
+  text-decoration: none;
+  color: #ed6bde;
+  font-size: calc($rf-spacing * $unit);
+}
+.rc-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc($rf-spacing * $unit);
+  flex-wrap: wrap-reverse;
+}
+.rc-footer-bottom > a {
+  text-decoration: underline;
+  color: #1a2622;
+}
+.rc-home {
+  background-size: min(762.657px, 100%);
+  background-repeat: no-repeat;
+  background-position: top center;
+}
+.rc-home-container {
+  display: flex;
+  flex-direction: column;
+  gap: calc($rf-spacing * $unit);
+  width: min(768px, 100%);
+  margin: auto;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.rc-home-container > h1 {
+  font-size: 3.5rem;
+  text-align: center;
+}
+.rc-home-container > h1 > span {
+  color: #ed6bde;
+}
+.rc-home-container > p {
+  text-align: center;
+  font-size: 1.125rem;
+  text-align: center;
+}
+.rc-home-container-form {
+  display: flex;
+  gap: calc($rf-spacing * $unit);
+  padding-top: calc($rf-spacing * $unit);
+  flex-wrap: wrap;
+}
+.rc-home-container-form > input {
+  flex: 1;
+  padding: calc($rf-spacing * $unit);
+}
+.rc-home-container-form > button {
+  padding: calc($rf-spacing * $unit) calc($rf-spacing * $unit);
+  background-color: #1a2622;
+  color: #ffffff;
+  border: 1px solid #1a2622;
+}
+@media (max-width: 600px) {
+  .rc-home-container-form > button {
+    width: 100%;
+  }
+}
+.rc-home-container-form > button:hover {
+  background-color: #ed6bde;
+  color: #1a2622;
+}
+.rc-nft {
+  display: flex;
+  flex-direction: column;
+  gap: calc($rf-spacing * $unit);
+  padding-top: 32px;
+  padding-bottom: 32px;
+  position: relative;
+}
+.rc-nft-form {
+  width: min(670px, 100%);
+  margin: 0 auto;
+  display: flex;
+  gap: calc($rf-spacing * $unit);
+  padding-top: calc($rf-spacing * $unit);
+  flex-wrap: wrap;
+}
+.rc-nft-form > input {
+  flex: 1;
+  padding: calc($rf-spacing * $unit);
+}
+.rc-nft-form > button {
+  padding: calc($rf-spacing * $unit) calc($rf-spacing * $unit);
+  color: #1a2622;
+  border: 1px solid #1a2622;
+}
+@media (max-width: 600px) {
+  .rc-nft-form > button {
+    width: 100%;
+  }
+}
+.rc-nft-form > button:hover {
+  background-color: #ed6bde;
+}
+.rc-nft-container {
+  display: flex;
+  gap: calc($rf-spacing * $unit);
+}
+@media (max-width: 600px) {
+  .rc-nft-container {
+    flex-direction: column;
+    gap: calc($rf-spacing * $unit);
+  }
+}
+.rc-nft-container-preview {
+  flex: 5;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+@media (max-width: 800px) {
+  .rc-nft-container-preview {
+    flex: 1;
+  }
+}
+.rc-nft-container-preview > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.rc-nft-container-data {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  gap: calc($rf-spacing * $unit);
+  justify-content: center;
+  padding: calc($rf-spacing * $unit) 0;
+}
+@media (max-width: 800px) {
+  .rc-nft-container-data {
+    flex: 1;
+  }
+}
+.rc-nft-container-data > .title > p {
+  font-size: 1.25rem;
+  line-height: 140%;
+  line-break: anywhere;
+}
+.rc-nft-container-data > .title > h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-break: anywhere;
+}
+.rc-nft-container-data > p {
+  font-size: 1rem;
+}
+.rc-nft-container-data > p > span {
+  line-break: anywhere;
+  font-weight: 500;
+}
+.rc-nft-container-data > button {
+  padding: calc($rf-spacing * $unit) calc($rf-spacing * $unit);
+  background-color: #1a2622;
+  color: #ffffff;
+  border: 1px solid #1a2622;
+  margin-right: auto;
+}
+@media (max-width: 600px) {
+  .rc-nft-container-data > button {
+    width: 100%;
+  }
+}
+.rc-nft-container-data > button:hover {
+  background-color: #ed6bde;
+  color: #1a2622;
+}
+.rc-nft-container-data-properties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc($rf-spacing * $unit);
+  height: 400px;
+  overflow-y: auto;
+}
+@media (max-width: 600px) {
+  .rc-nft-container-data-properties {
+    height: max-content;
+  }
+}
+.rc-nft-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  display: flex;
+  justify-content: center;
+  padding-top: 300px;
+}
+.rc-nft-loading > p {
+  font-size: 1.25;
+  font-weight: 500;
+  line-height: 150%;
+}
+.rc-error {
+  height: 50dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rc-error > h1 {
+  text-align: center;
+  width: min(500px, 100%);
+  font-size: 2.5rem;
+}
+.rc-error > h1 > a {
+  display: block;
+  font-size: 1.5rem;
+  color: #ed6bde;
+  padding: calc($rf-spacing * $unit);
+}
