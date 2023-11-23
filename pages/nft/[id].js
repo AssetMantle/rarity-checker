@@ -9,6 +9,7 @@ function nftDetail() {
   const [collectionData, setCollectionData] = useState({});
   const [NftPropertyData, setNftPropertyData] = useState([]);
   const [Loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -80,10 +81,12 @@ function nftDetail() {
       {!nftData ? (
         <section className="rc-nft-container">
           <div className="rc-nft-container-preview">
-            <img
-              src={collectionData?.contract?.metadata?.thumbnail_url}
-              className="h-24 w-24 rounded-lg"
-            />
+            <div className={`rc-nft-container-preview-image`}>
+              <img
+                src={collectionData?.contract?.metadata?.thumbnail_url}
+                className={``}
+              />
+            </div>
           </div>
 
           <div className="rc-nft-container-data">
@@ -171,7 +174,12 @@ function nftDetail() {
       ) : (
         <section className="rc-nft-container">
           <div className="rc-nft-container-preview">
-            <img src={`/not_found_nft.png`} className="h-24 w-24 rounded-lg" />
+            <div className="rc-nft-container-preview-image">
+              <img
+                src={`/not_found_nft.png`}
+                className="h-24 w-24 rounded-lg"
+              />
+            </div>
           </div>
 
           <div className="rc-nft-container-data">
