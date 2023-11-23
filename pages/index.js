@@ -4,6 +4,7 @@ import { Base64 } from "js-base64";
 import React, { useEffect, useState } from "react";
 import { fetchNftData, fetchNftData2 } from "./api/data";
 import { BsFillBarChartFill } from "react-icons/bs";
+import Link from "next/link";
 
 export default function Home() {
   const [nftData, setNftData] = useState([]);
@@ -4930,9 +4931,13 @@ export default function Home() {
               className=""
               placeholder="Enter Asset ID"
             />
-            <button onClick={searchForAssetId} className="">
+            <Link
+              href={`/nft/${searchAssetId}`}
+              // onClick={searchForAssetId}
+              className=""
+            >
               Try it for free
-            </button>
+            </Link>
           </div>
         </div>
       </main>
