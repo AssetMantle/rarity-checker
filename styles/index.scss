@@ -293,7 +293,9 @@ button,
           flex: 1;
           padding: sizeFun(3);
         }
-        & > button {
+        & > button,
+        & > a,
+        & > .button {
           padding: sizeFun(3) sizeFun(6);
           background-color: $rc-dark;
           color: $rc-white;
@@ -327,7 +329,9 @@ button,
         flex: 1;
         padding: sizeFun(3);
       }
-      & > button {
+      & > button,
+      & > a,
+      & > .button {
         padding: sizeFun(3) sizeFun(6);
         color: $rc-dark;
         border: 1px solid $rc-dark;
@@ -347,17 +351,26 @@ button,
         gap: sizeFun(6);
       }
       &-preview {
+        // align-self: flex-start;
+        margin-bottom: auto;
         flex: 5;
-        aspect-ratio: 4/3;
-        overflow: hidden;
         @media (max-width: $rf-res-md) {
           flex: 1;
         }
-        & > img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center;
+        @media (min-width: $rf-res-sm) {
+          position: sticky;
+          top: 10px;
+        }
+        &-image {
+          // width: 100%;
+          aspect-ratio: 4/3;
+          overflow: hidden;
+          & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
         }
       }
       &-data {
@@ -407,7 +420,6 @@ button,
           display: flex;
           flex-wrap: wrap;
           gap: sizeFun(8);
-          height: 400px;
           overflow-y: auto;
           @media (max-width: $rf-res-sm) {
             height: max-content;
