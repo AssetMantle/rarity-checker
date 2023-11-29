@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PropertyCard from "../../Components/PropertyCard";
+import Link from "next/link";
 
 function nftDetail() {
   const [NftID, setNftID] = useState();
+  const [SearchNftID, setSearchNftID] = useState();
   const [nftData, setNftData] = useState([]);
   const [collectionData, setCollectionData] = useState({});
   const [NftPropertyData, setNftPropertyData] = useState([]);
@@ -14,6 +16,7 @@ function nftDetail() {
 
   useEffect(() => {
     setNftID(router.query.id);
+    setSearchNftID(router.query.id);
   }, [router]);
 
   const getNFTData = () => {
@@ -67,14 +70,18 @@ function nftDetail() {
       <section className="rc-nft-form">
         <input
           type="text"
-          value={NftID}
-          onChange={(e) => setNftID(e.target.value)}
+          value={SearchNftID}
+          onChange={(e) => setSearchNftID(e.target.value)}
           className=""
           placeholder="Enter Asset ID"
         />
-        <button onClick={() => false} className="">
+        <Link
+          href={`/nft/${SearchNftID}`}
+          //onClick={() => false}
+          className=""
+        >
           Check NFT Rarity
-        </button>
+        </Link>
       </section>
       <i className="rc-divider"></i>
 
