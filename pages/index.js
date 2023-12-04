@@ -45,8 +45,10 @@ export default function Home() {
                 className=""
                 placeholder="Enter Asset ID"
               />
-              <small>{searchAssetIdValidationText}</small>
               <button onClick={handleSubmit}>Try it for free</button>
+              {searchAssetIdValidationText && (
+                <small>{searchAssetIdValidationText}</small>
+              )}
             </form>
           </div>
         </div>
