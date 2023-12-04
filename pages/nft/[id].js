@@ -47,7 +47,7 @@ function nftDetail({ nftDataList }) {
     const isValidAssetId = validateAssetId(SearchNftID);
     if (isValidAssetId) {
       const localSearchAssetId = SearchNftID;
-      setSearchNftID("");
+      // setSearchNftID("");
       setSearchAssetIdValidationText("");
       router.push(`/nft/${localSearchAssetId}`);
     } else {
