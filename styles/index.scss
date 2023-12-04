@@ -416,6 +416,20 @@ button,
             color: $rc-dark;
           }
         }
+        &-rarity {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 8px;
+          &-rank {
+            color: $rc-primary;
+            font-size: 1.4rem;
+          }
+          &-score {
+            font-weight: 700;
+            font-size: 1.4rem;
+          }
+        }
         &-properties {
           display: flex;
           flex-wrap: wrap;
