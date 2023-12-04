@@ -285,27 +285,29 @@ button,
         text-align: center;
       }
       &-form {
-        display: flex;
-        gap: sizeFun(4);
-        padding-top: sizeFun(3);
-        flex-wrap: wrap;
-        & > input {
-          flex: 1;
-          padding: sizeFun(3);
-        }
-        & > button,
-        & > a,
-        & > .button {
-          padding: sizeFun(3) sizeFun(6);
-          background-color: $rc-dark;
-          color: $rc-white;
-          border: 1px solid $rc-dark;
-          @media (max-width: $rf-res-sm) {
-            width: 100%;
+        & > form {
+          display: flex;
+          gap: sizeFun(4);
+          padding-top: sizeFun(3);
+          flex-wrap: wrap;
+          & > input {
+            flex: 1;
+            padding: sizeFun(3);
           }
-          &:hover {
-            background-color: $rc-primary;
-            color: $rc-dark;
+          & > button,
+          & > a,
+          & > .button {
+            padding: sizeFun(3) sizeFun(6);
+            background-color: $rc-dark;
+            color: $rc-white;
+            border: 1px solid $rc-dark;
+            @media (max-width: $rf-res-sm) {
+              width: 100%;
+            }
+            &:hover {
+              background-color: $rc-primary;
+              color: $rc-dark;
+            }
           }
         }
       }
