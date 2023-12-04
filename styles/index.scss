@@ -8,6 +8,8 @@ $rc-white: #ffffff;
 $rc-black: #000;
 $rc-gray-transparent: rgba(255, 255, 255, 0.65);
 
+$rc-error: #e44651;
+
 $rc-gradient: linear-gradient(
   90deg,
   #ed6b84 0%,
@@ -309,6 +311,12 @@ button,
               color: $rc-dark;
             }
           }
+          & > small {
+            width: 100%;
+            text-align: center;
+            color: $rc-error;
+            font-weight: 500;
+          }
         }
       }
     }
@@ -343,6 +351,12 @@ button,
         &:hover {
           background-color: $rc-primary;
         }
+      }
+      & > small {
+        width: 100%;
+        text-align: center;
+        color: $rc-error;
+        font-weight: 500;
       }
     }
     &-container {
