@@ -6,14 +6,21 @@ import { AiFillSignal } from "react-icons/ai";
 import PropertyCard from "../../Components/PropertyCard";
 
 // for fetch
-import { getCollectionData, searchForAssetId } from "../../config";
+import {
+  INVALID_ASSET_ID,
+  getCollectionData,
+  searchForAssetId,
+  validateAssetId,
+} from "../../config";
 
 function nftDetail({ nftDataList }) {
-  const [SearchNftID, setSearchNftID] = useState();
+  const router = useRouter();
+
+  const [SearchNftID, setSearchNftID] = useState(router.query.id);
   const [nftData, setNftData] = useState([]);
   const [collectionData, setCollectionData] = useState({});
-  const NftPropertyRaw = nftDataList;
-  const router = useRouter();
+  const [NftPropertyRaw, setNftPropertyRaw] = useState([]);
+
   const NftID = router.query.id;
 
   const NftPropertyData = [...NftPropertyRaw].filter(
@@ -31,6 +38,22 @@ function nftDetail({ nftDataList }) {
       setLoading(false);
     })();
   }, []);
+
+  const [searchAssetIdValidationText, setSearchAssetIdValidationText] =
+    useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValidAssetId = validateAssetId(SearchNftID);
+    if (isValidAssetId) {
+      const localSearchAssetId = SearchNftID;
+      setSearchNftID("");
+      setSearchAssetIdValidationText("");
+      router.push(`/nft/${localSearchAssetId}`);
+    } else {
+      setSearchAssetIdValidationText(INVALID_ASSET_ID);
+    }
+  };
 
   // console.log(props.data);
 
@@ -96,7 +119,9 @@ function nftDetail({ nftDataList }) {
               To know individual property rarity scores, click below to generate
               rarity report{" "}
             </p>
-            <button onClick={searchForAssetId}>Generate Rarity Report</button>
+            <button onClick={() => setNftPropertyRaw(nftDataList)}>
+              Generate Rarity Report
+            </button>
           </>
         )}
       </div>
@@ -132,13 +157,9 @@ function nftDetail({ nftDataList }) {
           className=""
           placeholder="Enter Asset ID"
         />
-        <Link
-          href={`/nft/${SearchNftID}`}
-          //onClick={() => false}
-          className=""
-        >
-          Check NFT Rarity
-        </Link>
+
+        <button onClick={handleSubmit}>Check NFT Rarity</button>
+        <small>{searchAssetIdValidationText}</small>
       </section>
       <i className="rc-divider"></i>
       {nftDisplayJSX}
