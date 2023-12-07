@@ -9,6 +9,7 @@ import PropertyCard from "../../Components/PropertyCard";
 import {
   INVALID_ASSET_ID,
   getCollectionData,
+  queryAssetId,
   searchForAssetId,
   validateAssetId,
 } from "../../config";
@@ -16,12 +17,12 @@ import {
 function nftDetail({ nftDataList }) {
   const router = useRouter();
 
+  const NftID = router.query.id;
+
   const [SearchNftID, setSearchNftID] = useState(router.query.id);
-  const [nftData, setNftData] = useState([]);
+  const [nftData, setNftData] = useState({});
   const [collectionData, setCollectionData] = useState({});
   const [NftPropertyRaw, setNftPropertyRaw] = useState([]);
-
-  const NftID = router.query.id;
 
   const NftPropertyData = [...NftPropertyRaw].filter(
     (el) => el.assetId === NftID
@@ -35,8 +36,9 @@ function nftDetail({ nftDataList }) {
     (async () => {
       const fetchedCollectionsData = await getCollectionData();
       setCollectionData(fetchedCollectionsData);
-      setLoading(false);
     })();
+    Promise.resolve(queryAssetId(NftID)).then((res) => setNftData(res));
+    setLoading(false);
   }, []);
 
   const [searchAssetIdValidationText, setSearchAssetIdValidationText] =
@@ -70,8 +72,12 @@ function nftDetail({ nftDataList }) {
 
       <div className="rc-nft-container-data">
         <div className="rc-nft-container-data-title">
-          <p>{collectionData?.contract?.name}</p>
-          <h1>{nftData?.name ? nftData.name : "NFT Name"}</h1>
+          <p>
+            {nftData?.classificationIDBase64
+              ? nftData.classificationIDBase64
+              : "NFT Collection name"}
+          </p>
+          <h1>{nftData?.assetIDBase64 ? nftData.assetIDBase64 : "NFT Name"}</h1>
         </div>
 
         {NftPropertyData && (
@@ -146,6 +152,8 @@ function nftDetail({ nftDataList }) {
       </div>
     </section>
   );
+
+  console.log(nftData, NftPropertyData);
 
   return (
     <main className="rc-container rc-nft">

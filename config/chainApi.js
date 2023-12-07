@@ -44,7 +44,18 @@ export const queryAssetId = async (assetId) => {
     );
 
   console.log("queryAssetId response: ", response);
-  return response;
+
+  const classificationIDBase64 = Base64.fromUint8Array(
+    response?.record?.mappable?.asset?.classificationID?.hashID?.iDBytes
+  );
+
+  const assetIDBase64 = Base64.fromUint8Array(
+    response?.record?.key?.assetID?.hashID?.iDBytes
+  );
+  const res = { ...response, assetIDBase64, classificationIDBase64 };
+
+  console.log(res);
+  return res;
 };
 
 export async function searchForAssetId(NftID) {
