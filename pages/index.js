@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { INVALID_ASSET_ID, validateAssetId } from "../config";
+import { INVALID_ASSET_ID, queryAssetId, validateAssetId } from "../config";
 
 export default function Home() {
   const [searchAssetId, setSearchAssetId] = useState("");
@@ -9,7 +9,7 @@ export default function Home() {
     useState("");
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValidAssetId = validateAssetId(searchAssetId);
     if (isValidAssetId) {

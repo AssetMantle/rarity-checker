@@ -1,6 +1,7 @@
 import { assetmantle } from "@assetmantle/mantlejs";
 import { Base64 } from "js-base64";
 import { rpcEndpointLocalNode } from "./chain";
+import base64url from "base64url";
 
 ("base64url");
 // import base64url from "base64url";
@@ -17,6 +18,33 @@ export const validateAssetId = (assetId) => {
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
   console.log("base64 decoded: ", base64regex.test(assetId));
   return base64regex.test(assetId);
+};
+
+export const queryAssetId = async (assetId) => {
+  const hashIdUint8Array = new Uint8Array(base64url.toBuffer(assetId));
+  const mantleQueryClient =
+    await assetmantle.ClientFactory.createRPCQueryClient({
+      rpcEndpoint: rpcEndpointLocalNode,
+    });
+
+  const queryRequest =
+    assetmantle.modules.assets.queries.asset.QueryRequest.fromPartial({
+      key: assetmantle.modules.assets.key.Key.fromPartial({
+        assetID: assetmantle.schema.ids.base.AssetID.fromPartial({
+          hashID: assetmantle.schema.ids.base.HashID.fromPartial({
+            iDBytes: hashIdUint8Array,
+          }),
+        }),
+      }),
+    });
+
+  const response =
+    await mantleQueryClient.assetmantle.modules.assets.queries.asset.handle(
+      queryRequest
+    );
+
+  console.log("queryAssetId response: ", response);
+  return response;
 };
 
 export async function searchForAssetId(NftID) {
